@@ -6,7 +6,7 @@ var scrolltop = 0;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 c.strokeStyle = "white";
-
+ 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
