@@ -13,13 +13,13 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener("scroll", () => {
-  canvas.style.backgroundPositionY = `${
-    canvas.getBoundingClientRect().y / 2
-  }px`;
+  canvas.style.backgroundPositionY = `${canvas.getBoundingClientRect().y / 2}px`;
 
   for (var i = 0; i < dotsArray.length; i++) {
     dotsArray[i].update();
   }
+  
+  mousePositonChange()
 });
 
 const dotsArray = [];
@@ -57,52 +57,42 @@ for (var i = 0; i < 180; i++) {
 }
 console.log(dotsArray);
 canvas.addEventListener("mousemove", () => {
-  const event = window.event;
-  var react = canvas.getBoundingClientRect();
-  mouseX = event.clientX - react.left;
-  mouseY = event.clientY - react.top;
-  c.strokeStyle = "white";
+  mousePositonChange()
 });
 canvas.addEventListener("mouseleave", () => {
   c.strokeStyle = "transparent";
 });
 function animate() {
   requestAnimationFrame(animate);
-  const event = window.event;
   c.clearRect(0, 0, innerWidth, innerHeight);
-  dotsArray.forEach(e => {
-    e.update()
-  })
-  // for (var i = 0; i < dotsArray.length; i++) {
-  //   console.log(dotsArray[i].update())
-  // }
+  dotsArray.forEach((e) => {
+    e.update();
+  });
 }
 animate();
 
-// const line=() =>{
-//     c.clearRect(0,0, innerWidth, innerHeight)
+const mousePositonChange= ()=>{
+  
+  const event = window.event;
+  var react = canvas.getBoundingClientRect();
+  mouseX = event.clientX - react.left;
+  mouseY = event.clientY - react.top;
+  c.strokeStyle = "white";
 
-//     c.beginPath()
-//     c.arc(200,200,3,0,Math.PI * 2 ,false)
-//     c.moveTo(200, 200)
-//     c.lineTo(mouseX,mouseY)
-//     c.stroke()
-//     c.fill()
-//     c.closePath()
-// }
+}
 
+// text animation
 
 const inViewport = (entries, observer) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     entry.target.classList.toggle("is-inViewport", entry.isIntersecting);
   });
 };
 
 const Obs = new IntersectionObserver(inViewport);
-const obsOptions = {}; 
+const obsOptions = {};
 
-
-const ELs_inViewport = document.querySelectorAll('[data-inviewport]');
-ELs_inViewport.forEach(EL => {
+const ELs_inViewport = document.querySelectorAll("[data-inviewport]");
+ELs_inViewport.forEach((EL) => {
   Obs.observe(EL, obsOptions);
 });
