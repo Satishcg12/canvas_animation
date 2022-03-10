@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+canvas {
+    background-color: rgb(24, 24, 24);
+    height: 100vh;
+    width: 100vw;
+    background: url('./2.jpg') no-repeat fixed;
+    background-size: cover;
+}
+
+.topcontainer {
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.521);
+
+}
+
+.body_contents {
+    background: url('./1.jfif') no-repeat fixed;
+    height: 90vh;
+    width: 100vw;
+    background-size: cover;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.second {
+    background: url('./2.jpg') no-repeat fixed;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+[data-inviewport="scale-in"] {
+    transition: 2s;
+    transform: scale(0.1);
+}
+
+[data-inviewport="scale-in"].is-inViewport {
+    transform: scale(1);
+}
+
+[data-inviewport="fade-rotate"] {
+    transition: 2s;
+    opacity: 0;
+}
+
+[data-inviewport="fade-rotate"].is-inViewport {
+    transform: rotate(180deg);
+    opacity: 1;
+}
